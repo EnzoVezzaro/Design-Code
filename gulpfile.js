@@ -54,6 +54,16 @@ gulp.task('sass', function () {
 /**
 * Enzo Vezzaro gulp
 */
+gulp.task('npmUpdate', function () {
+  var update = require('gulp-update')();
+
+  gulp.watch('./package.json').on('change', function (file) {
+    update.write(file);
+  });
+
+})
+
+gulp.task('default', ['npmUpdate']);
 
 gulp.task('jade', function(){
     return gulp.src('_jadeFiles/*.jade')
